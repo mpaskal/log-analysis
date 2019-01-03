@@ -33,5 +33,5 @@ Reporting tool for internal usage that gets data from database and helps analyze
 <ol>
   
 <h3>Expected result</h3>
-<img src="alt="https://github.com/mpaskal/log-analysis_project/blob/master/screenshot_report.jpg style="max-width:100%>
-<a target=_blank href://https://github.com/mpaskal/log-analysis_project/blob/master/screenshot_report.jpg href=></a>
+<img src="https://github.com/mpaskal/log-analysis_project/blob/master/screenshot_report.jpg" alt="screenshot_report.jpg" style="max-width:100%">
+<a target="_blank" href=:https://github.com/mpaskal/log-analysis_project/blob/master/screenshot_report.jpg'</a>
