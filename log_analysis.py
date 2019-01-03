@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import psycopg2
 
 dbname = "news"
@@ -12,7 +14,8 @@ def before_query():
 def after_query(query, db, cursor):
     cursor.execute(query)
     result = cursor.fetchall()
-    db.close()
+    db.close(
+)
     return result
 
 
