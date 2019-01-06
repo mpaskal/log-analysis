@@ -20,16 +20,18 @@ Reporting tool for internal usage that gets data from database and helps analyze
 
 ## Installation
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1) and [Vagrant](https://www.vagrantup.com/) for your OS
-2. From your terminal, e.g. Microsoft Command Prompt (cmd) check vagrant was installed, e.g.: 
+2. Launch your terminal. Everyting belown will be done in it.
+3. Check that Vagrant was installed: run `vagrant --version`. You should see something like this
 `C:\Users\Administrator>vagrant --version
 Vagrant 2.2.2`
-3. Clone this [repo](https://github.com/mpaskal/log-analysis_project.git)
-4. In the terminal navigate to the project directory
-5. Launch the VM with `vigrant up` command to download and install the Ubuntu-16.04, PostgreSQL, python, dependences, create database "News". 
-6. Run `vagrant ssh` to log in to the Ubuntu VM
-7. Load data of "News: navigate to vagrant directory and run `psql -d news -f newsdata.sql`
-8. Run python log_analysis.py in the terminal with command `python /vagrant/log_analysis.py)`
-9. Check the result on the console
+4. To get the project with test data and VM clone this [repo](https://github.com/mpaskal/log-analysis_project.git)
+5. Navigate to the project directory
+6. Unzip database file newsdata in the project directory
+7. Launch the VM with `vigrant up` command to download and install the Ubuntu-16.04, PostgreSQL, python, dependences, create database **"News"**. 
+8. Run `vagrant ssh` to log in to the Ubuntu VM
+9. Load data of **"News"**: navigate to vagrant directory and run `psql -d news -f newsdata.sql`
+10. Run log analisis script `log_analysis.py` in the terminal with command `python /vagrant/log_analysis.py)`
+11. Check the result 
 
 ## Expected result
 ![Screenshot with the result ont the console](/screenshot_report.jpg)
