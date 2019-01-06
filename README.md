@@ -1,4 +1,4 @@
-<h1>Log Analysis Project</h2>
+# Log Analysis Project
 
 <h2>Description</h2>
 Reporting tool for internal usage that gets data from database and helps analyze what web site articles and authors more popular, and on which page users experiences high rate of issues. 
