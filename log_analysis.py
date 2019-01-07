@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3s
 
 import psycopg2
 
@@ -23,10 +23,10 @@ def after_query(query, db, cursor):
 def article():
     # Print titles and number of views of the articles
     db, c = before_query()
-    query = "SELECT * FROM (SELECT title, COUNT(title) AS views \
+    query = "SELECT title, COUNT(title) AS views \
     FROM articles, log \
     WHERE log.path = concat( '/article/' , articles.slug ) \
-    GROUP BY title ORDER BY views DESC) AS article_subq LIMIT 3"
+    GROUP BY title ORDER BY views DESC LIMIT 3"
     result = after_query(query, db, c)
     print("\nThe most popular three articles of all time:\n")
     print("Article                            " + "|" + " # of views   ")
@@ -48,7 +48,7 @@ def authors():
     print("\n\nThe most popular article authors of all time:\n")
     print("Author's name   " + "|" + " # of views  ")
     for i in range(0, len(result), 1):
-        print(str(result[i][0]) + " | " + str(result[i][1]))
+        print(result[i][0] + " | " + str(result[i][1]))
 
 
 # Days with more than 1% of requests lead to errors
@@ -56,7 +56,7 @@ def log_errors():
     # Print days with more than 1% of requests lead to errors
     db, c = before_query()
     query = "SELECT * FROM \
-    (SELECT Date, Error, Total, (Error * 100.0)/Total AS Percent \
+    (SELECT TO_CHAR(date, 'Mon DD, YYYY'), Error, Total, ROUND((Error * 100.0)/Total, 2) AS Percent \
     FROM (SELECT time::timestamp::date AS Date, COUNT(status) AS Total, \
     SUM(case WHEN status = '404 NOT FOUND' THEN 1 else 0 end) AS Error \
     FROM log GROUP BY time::timestamp::date) AS result \
@@ -64,9 +64,9 @@ def log_errors():
     ORDER BY Percent DESC) AS errors_subq"
     result = after_query(query, db, c)
     print("\n\nDays with more than 1% of requests lead to errors:\n")
-    print("Date       " + "|" + " % of errors  ")
+    print("Date         " + "|" + " % of errors  ")
     for i in range(0, len(result), 1):
-        print(str(result[i][0]) + " | " + str(round(result[i][3], 2)))
+        print(result[i][0] + " | " + str(result[i][3]))
 
 
 if __name__ == '__main__':
