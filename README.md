@@ -10,14 +10,12 @@ The project is done with Python script that uses the psycopg2 library to query P
 
 ## Script's design
 ### The script consists of 5 functions:
-+ **before function** - establish connection
-+ **after function** - run query and close connection
-+ **3 functions for 3 reports** call before function, set query, cal after function, print the result
-+ **condition when functions will be called** if it's true, calls other functons, prints report title
++ **helping function** establish connection, run query and close connection
++ **3 functions for 3 reports** set query, call helping function, print the result
++ **main function** condition when functions will be called; if it's true, calls other functons, prints report title
 
 ## Details about log_analysis.py functions
-+ `before_query()` - establishes connection to database, returns db connection and cursor
-+ `after_query(query, db, cursor)` - takes query, db and cursor as arguments, runs query and return result, closes db connection
++ `run_query(query)` - establishes connection to database, runs query, closes db connection and returns result
 + `article()` - has a quesry with subquery, prints titles and number of views of the most popular three articles of all time
 + `authors()` - has a quesry with subquery, prints authors and number of views of the most popular article authors of all time
 + `log_errors()` - has a quesry with subquery, prints days with more than 1% of requests lead to errors
